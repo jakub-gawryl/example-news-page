@@ -17,7 +17,8 @@ const StyledHeader = styled.div`
     &__inner {
       position: fixed;
       top: 0;
-      width:100%;
+      width: 100%;
+      background-color: #fff;
     }
 
     &__content {
