@@ -1,9 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MainMenu, { MainMenuItem } from 'components/molecules/MainMenu';
+import MainMenu from 'components/organisms/MainMenu';
+import MobileMenu from 'components/organisms/MobileMenu';
 import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
+import MenuList from 'components/molecules/MenuList';
 
 const DEFAULT_SHRINK_AT = 10;
 
@@ -39,7 +41,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const menuItems: MainMenuItem[] = [
+const menuItems = [
   {
     caption: 'Home',
     href: '/',
@@ -64,6 +66,8 @@ const Header: React.FC<Props> = ({fixedHeaderAt = DEFAULT_SHRINK_AT}) => {
   const contentRef = React.useRef(null);
   const placeholderRef = React.useRef(null);
   const [contentHeight, setContentHeight] = React.useState(0);
+
+  // TODO - Change setContentHeight to update everytime window is resized!
   //@ts-ignore
   React.useEffect(() => setContentHeight(contentRef?.current?.clientHeight || 0), [setContentHeight]);
 
@@ -82,7 +86,13 @@ const Header: React.FC<Props> = ({fixedHeaderAt = DEFAULT_SHRINK_AT}) => {
               </a>
             </Link>
 
-            <MainMenu menuItems={menuItems} />
+            <MainMenu>
+              <MenuList menuItems={menuItems} />
+            </MainMenu>
+
+            <MobileMenu>
+              <MenuList menuItems={menuItems} mobileMenu={true} />
+            </MobileMenu>
           </div>
         </div>
       </div>
