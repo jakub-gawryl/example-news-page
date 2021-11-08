@@ -5,6 +5,7 @@ const cn = require('classnames');
 
 type MobileMenuProps = {
   children?: React.ReactElement | React.ReactElement[];
+  clickDimmerToClose?: boolean;
 };
 
 const transtionTime = 0.5;
@@ -49,6 +50,9 @@ const StyledMobileMenu = styled.div`
       &__dimmer--active {
         background-color: rgba(0, 0, 0, 0.5);
       }
+      &__dimmer--closable {
+        cursor: pointer;
+      }
 
       &__content {
         position: absolute;
@@ -75,7 +79,7 @@ const StyledMobileMenu = styled.div`
   }
 `;
 
-const MobileMenu: React.FC<MobileMenuProps> = ({children}) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({children, clickDimmerToClose = false}) => {
   const [isOpened, setIsOpened] = React.useState(false);
   const [isContentDisplayed, setIsContentDisplayed] = React.useState(false);
 
@@ -86,7 +90,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({children}) => {
 
   const onContentTransitionEnd = () => !isOpened && setIsContentDisplayed(false);
 
-  const onDimmerClick = () => setIsOpened(false);
+  const onDimmerClick = () => clickDimmerToClose && setIsOpened(false);
 
   return (
     <StyledMobileMenu>
@@ -95,7 +99,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({children}) => {
           <MobileMenuButton onClick={onMobileBtnClick} closedIcon={isOpened}/>
         </div>
         <div className={cn('mobile-menu__full-page', {'mobile-menu__full-page--block': isContentDisplayed})}>
-          <div className={cn('mobile-menu__dimmer', {'mobile-menu__dimmer--active': isOpened})} onClick={onDimmerClick}></div>
+          <div
+            className={cn('mobile-menu__dimmer', {
+              'mobile-menu__dimmer--active': isOpened,
+              'mobile-menu__dimmer--closable': clickDimmerToClose
+            })}
+            onClick={onDimmerClick}
+          ></div>
           <div className={cn('mobile-menu__content', {'mobile-menu__content--opened': isOpened})} onTransitionEnd={onContentTransitionEnd}>
             {children}
           </div>

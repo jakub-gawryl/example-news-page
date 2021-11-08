@@ -6,6 +6,7 @@ import MobileMenu from 'components/organisms/MobileMenu';
 import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
 import MenuList from 'components/molecules/MenuList';
+import { MenuItems } from 'components/molecules/MenuList/types';
 
 const DEFAULT_SHRINK_AT = 10;
 
@@ -41,7 +42,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const menuItems = [
+const menuItems: MenuItems = [
   {
     caption: 'Home',
     href: '/',
