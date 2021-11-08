@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MainMenu, { MainMenuItem } from '../molecules/MainMenu';
-import usePageScroll from '../../hooks/usePageScroll';
+import MainMenu, { MainMenuItem } from 'components/molecules/MainMenu';
+import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
 
 const DEFAULT_SHRINK_AT = 10;
