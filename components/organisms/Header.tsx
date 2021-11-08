@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MainMenu from '../../molecules/MainMenu/index';
-import usePageScroll from '../../../hooks/usePageScroll';
+import MainMenu, { MainMenuItem } from '../molecules/MainMenu';
+import usePageScroll from '../../hooks/usePageScroll';
 import styled from 'styled-components';
 
 const DEFAULT_SHRINK_AT = 10;
@@ -29,11 +29,35 @@ const StyledHeader = styled.div`
       transition: padding .4s ease;
     }
 
+    &--shrinked .page-header__inner {
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+    }
+
     &--shrinked .page-header__content {
       padding: 20px 0;
     }
   }
 `;
+
+const menuItems: MainMenuItem[] = [
+  {
+    caption: 'Home',
+    href: '/',
+    active: true
+  },
+  {
+    caption: 'Lorem',
+    href: '/lorem'
+  },
+  {
+    caption: 'Ipsum',
+    href: '/ipsum'
+  },
+  {
+    caption: 'Dolor',
+    href: '/dolor'
+  }
+];
 
 const Header: React.FC<Props> = ({fixedHeaderAt = DEFAULT_SHRINK_AT}) => {
   const scrollX = usePageScroll();
@@ -58,7 +82,7 @@ const Header: React.FC<Props> = ({fixedHeaderAt = DEFAULT_SHRINK_AT}) => {
               </a>
             </Link>
 
-            <MainMenu />
+            <MainMenu menuItems={menuItems} />
           </div>
         </div>
       </div>
