@@ -1,3 +1,5 @@
-import MenuList from './MenuList';
+import MenuListComp from './MenuList';
+import { MenuList } from './types';
 
-export default MenuList;
+export default MenuListComp;
+export type { MenuList };

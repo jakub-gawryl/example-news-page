@@ -5,10 +5,7 @@ import MainMenu from 'components/organisms/MainMenu';
 import MobileMenu from 'components/organisms/MobileMenu';
 import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
-import MenuList from 'components/molecules/MenuList';
-import { MenuItems } from 'components/molecules/MenuList/types';
-
-const DEFAULT_SHRINK_AT = 10;
+import MenuList, { MenuList as MenuListNS } from 'components/molecules/MenuList';
 
 type Props = {
   companyName?: string;
@@ -42,7 +39,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const menuItems: MenuItems = [
+const menuItems: MenuListNS.Items = [
   {
     caption: 'Home',
     href: '/',
@@ -62,7 +59,7 @@ const menuItems: MenuItems = [
   }
 ];
 
-const Header: React.FC<Props> = ({fixedHeaderAt = DEFAULT_SHRINK_AT}) => {
+const Header: React.FC<Props> = ({fixedHeaderAt = 10}) => {
   const scrollX = usePageScroll();
   const contentRef = React.useRef(null);
   const placeholderRef = React.useRef(null);

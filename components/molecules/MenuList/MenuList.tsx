@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MenuItems } from './types';
-import MenuListItem from './components/MenuListItem';
+import { MenuList as MenuListNS } from './types';
+import MenuListItemComponent from './components/MenuListItem';
 const cn = require('classnames');
 
 export type MenuListProperties = {
-  menuItems: MenuItems;
+  menuItems: MenuListNS.Items;
   mobileMenu?: boolean;
 };
 
@@ -36,7 +36,7 @@ const MenuList: React.FC<MenuListProperties> = ({menuItems = [], mobileMenu = fa
     <StyledMenuList>
       <div className={cn('menu-list', {'menu-list__menu-item--mobile': mobileMenu})}>
         {hasMenuItems && <ul>
-          {menuItems.map((menuItem, index) => <MenuListItem key={index} menuItem={menuItem} />)}
+          {menuItems.map((menuItem, index) => <MenuListItemComponent key={index} menuItem={menuItem} />)}
         </ul>}
       </div>
     </StyledMenuList>

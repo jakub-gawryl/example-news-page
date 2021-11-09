@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { MenuItem } from './../types';
+import { MenuList } from '../types';
 const cn = require('classnames');
 
 type MenuListItemProps = {
-  menuItem: MenuItem;
+  menuItem: MenuList.Item;
 };
 
 const StyledMenuListItem = styled.li`
