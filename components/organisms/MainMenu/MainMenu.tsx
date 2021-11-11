@@ -4,12 +4,10 @@ import styled from 'styled-components';
 type MainMenuProps = {
   children?: React.ReactElement | React.ReactElement[];
 };
-
+ 
 const StyledMainMenu = styled.div`
   @media screen and (max-width: 768px) {
-    .main-menu {
-      display: none;
-    }
+    display: none;
   }
 `;
 
@@ -23,4 +21,4 @@ const MainMenu: React.FC<MainMenuProps> = ({children}) => {
   )
 }
 
-export default MainMenu
+export default MainMenu;

@@ -6,6 +6,7 @@ import MobileMenu from 'components/organisms/MobileMenu';
 import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
 import MenuList, { MenuList as MenuListNS } from 'components/molecules/MenuList';
+import SocialMediaList, { SocialMediaList as SocialMediaListType } from 'components/molecules/SocialMediaList';
 
 type Props = {
   companyName?: string;
@@ -46,16 +47,49 @@ const menuItems: MenuListNS.Items = [
     active: true
   },
   {
-    caption: 'Lorem',
-    href: '/lorem'
+    caption: 'News',
+    href: '/news'
   },
   {
-    caption: 'Ipsum',
-    href: '/ipsum'
+    caption: 'Sport',
+    href: '/sport'
   },
   {
-    caption: 'Dolor',
-    href: '/dolor'
+    caption: 'Travel',
+    href: '/travel'
+  },
+  {
+    caption: 'Culture',
+    href: '/culture'
+  }
+];
+
+const socialMedia: SocialMediaListType.Items = [
+  {
+    kind: SocialMediaListType.EKind.TWITTER,
+    url: 'https://twitter.com',
+    title: 'Check out our twitter!'
+  },
+  {
+    kind: SocialMediaListType.EKind.YOUTUBE,
+    url: 'https://youtube.com'
+  },
+  {
+    kind: SocialMediaListType.EKind.FACEBOOK,
+    url: 'https://facebook.com'
+  },
+  {
+    kind: SocialMediaListType.EKind.INSTAGRAM,
+    url: 'https://instagram.com'
+  },
+  {
+    kind: SocialMediaListType.EKind.LINKED_IN,
+    url: 'https://linkedin.com'
+  }
+  ,
+  {
+    kind: SocialMediaListType.EKind.PINTEREST,
+    url: 'https://pinterest.com'
   }
 ];
 
@@ -78,11 +112,16 @@ const Header: React.FC<Props> = ({fixedHeaderAt = 10}) => {
       <div className="page-header__inner">
         <div className="container">
           <div className="page-header__content" ref={contentRef}>
+            {/* TODO: Move logo to separate component */}
             <Link href="/" passHref>
               <a>
-                <Image src="/logo.png" alt="Example logo" width={384} height={64} title="Example Page" />
+                <Image src="/logo.png" alt="Example logo" width={288} height={48} title="Example Page" />
               </a>
             </Link>
+
+            <div style={{color: '#05B8E7'}}>
+              <SocialMediaList socialMedia={socialMedia} />
+            </div>
 
             <MainMenu>
               <MenuList menuItems={menuItems} />
@@ -91,6 +130,7 @@ const Header: React.FC<Props> = ({fixedHeaderAt = 10}) => {
             <MobileMenu>
               <MenuList menuItems={menuItems} mobileMenu={true} />
             </MobileMenu>
+
           </div>
         </div>
       </div>
