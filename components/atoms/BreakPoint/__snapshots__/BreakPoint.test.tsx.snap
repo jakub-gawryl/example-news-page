@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BreakPoint for page width = 600 should SHOW component(s) with prop min=600 & max=600 & display=flex 1`] = `
+<div>
+  <div
+    style="display: flex;"
+  >
+    <p>
+      Hello test!
+    </p>
+  </div>
+</div>
+`;
