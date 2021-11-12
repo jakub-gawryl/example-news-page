@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MainMenu from 'components/organisms/MainMenu';
 import MobileMenu from 'components/organisms/MobileMenu';
 import usePageScroll from 'hooks/usePageScroll';
 import styled from 'styled-components';
 import MenuList, { MenuList as MenuListNS } from 'components/molecules/MenuList';
 import SocialMediaList, { SocialMediaList as SocialMediaListType } from 'components/molecules/SocialMediaList';
+import BreakPoint from 'components/atoms/BreakPoint';
 
 type Props = {
   companyName?: string;
@@ -119,18 +119,22 @@ const Header: React.FC<Props> = ({fixedHeaderAt = 10}) => {
               </a>
             </Link>
 
-            <div style={{color: '#05B8E7'}}>
+            <BreakPoint min={640}>
               <SocialMediaList socialMedia={socialMedia} />
-            </div>
+            </BreakPoint>
 
-            <MainMenu>
+            <BreakPoint min={960}>
               <MenuList menuItems={menuItems} />
-            </MainMenu>
+            </BreakPoint>
 
-            <MobileMenu>
-              <MenuList menuItems={menuItems} mobileMenu={true} />
-            </MobileMenu>
-
+            <BreakPoint max={959}>
+              <MobileMenu>
+                <BreakPoint max={639}>
+                  <SocialMediaList socialMedia={socialMedia} />
+                </BreakPoint>
+                <MenuList menuItems={menuItems} mobileMenu={true} />
+              </MobileMenu>
+            </BreakPoint>
           </div>
         </div>
       </div>

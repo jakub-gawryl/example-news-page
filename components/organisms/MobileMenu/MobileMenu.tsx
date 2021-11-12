@@ -12,69 +12,63 @@ const transtionTime = 0.5;
 const transitionType = 'ease';
 
 const StyledMobileMenu = styled.div`
-  display: none;
+  .mobile-menu {
+    &__button {
+      position: relative;
+      z-index: 10001;
+    }
 
-  @media screen and (max-width: 768px) {
-    display: block;
+    &__full-page {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-    .mobile-menu {
-      &__button {
-        position: relative;
-        z-index: 10001;
-      }
+    &__full-page--block {
+      visibility: visible;
+    }
 
-      &__full-page {
-        visibility: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
+    &__dimmer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transition: background-color ${transtionTime}s ${transitionType};
+    }
 
-      &__full-page--block {
-        visibility: visible;
-      }
+    &__dimmer--active {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    &__dimmer--closable {
+      cursor: pointer;
+    }
 
-      &__dimmer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        transition: background-color ${transtionTime}s ${transitionType};
-      }
+    &__content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100%;
+      overflow: auto;
+      background:#fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      transform: translateX(100%);
+      transition: transform ${transtionTime}s ${transitionType};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-      &__dimmer--active {
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-      &__dimmer--closable {
-        cursor: pointer;
-      }
-
-      &__content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 80%;
-        height: 100%;
-        overflow: auto;
-        background:#fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-        transform: translateX(100%);
-        transition: transform ${transtionTime}s ${transitionType};
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      &__content--opened {
-        transform: translateX(0);
-      }
+    &__content--opened {
+      transform: translateX(0);
     }
   }
 `;
