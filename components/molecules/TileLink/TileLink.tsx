@@ -11,18 +11,24 @@ type Props = {
 };
 
 const StyledTileLink = styled.div`
+  height: 100%;
+
   .tile-link {
     display: block;
     position: relative;
+    height: 100%;
 
     &__image {
       display: block;
+      height: 100%;
     }
 
     &__image img {
       display: block;
       width: auto;
       max-width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     &__content {
@@ -35,23 +41,23 @@ const StyledTileLink = styled.div`
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-start;
-      padding: 16px;
+      padding: 1em;
       color: #fff;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent 70%);
+      background: linear-gradient(0deg,rgba(0,0,0,0.7),transparent 80%);
     }
 
     &__title {
       font-weight: 500;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
-      line-height: 2.2rem;
+      font-size: 1.067em;
+      letter-spacing: 0.025em;
+      line-height: 1.5em;
     }
 
     &__section-anchor {
       position: relative;
-      padding: 4px 10px;
-      margin-bottom: 10px;
-      font-size: 1rem;
+      padding: 0.1333em 0.667em;
+      margin-bottom: 0.4em;
+      font-size: 0.867em;
       text-transform: uppercase;
       z-index: 10;
     }
@@ -59,11 +65,11 @@ const StyledTileLink = styled.div`
     &__section-anchor:before {
       content: '';
       position: absolute;
-      top: -1px;
+      top: 0;
       left: 0;
       width: 4px;
       height: 100%;
-      background: #05B8E7;
+      background: #179ec2;
       z-index: -1;
       transition: width .1s ease;
     }
