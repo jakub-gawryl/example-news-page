@@ -15,6 +15,9 @@ type Props = {
 
 const StyledHeader = styled.div`
   .page-header {
+    position: relative;
+    z-index: 10000;
+
     &__inner {
       position: fixed;
       top: 0;
